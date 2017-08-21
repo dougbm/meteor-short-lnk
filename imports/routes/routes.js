@@ -1,6 +1,6 @@
-import {Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import React from 'react';
-import {Router, Route, browserHistory} from 'react-router';
+import { Router, Route, browserHistory } from 'react-router';
 
 import Signup from '../ui/Signup';
 import Link from '../ui/Link';
@@ -20,14 +20,14 @@ const onEnterPrivatePage = () => {
   }
 };
 export const onAuthChange = (isAuthenticated) => {
-  const pathName = browserHistory.getCurrentLocation().pathname;
-  const isUnauthenticatedPage = unauthenticatedPages.includes(pathName);
-  const isAuthenticatedPage = authenticatedPages.includes(pathName);
+  const pathname = browserHistory.getCurrentLocation().pathname;
+  const isUnauthenticatedPage = unauthenticatedPages.includes(pathname);
+  const isAuthenticatedPage = authenticatedPages.includes(pathname);
 
   if (isUnauthenticatedPage && isAuthenticated) {
-    browserHistory.push('/links');
+    browserHistory.replace('/links');
   } else if (isAuthenticatedPage && !isAuthenticated) {
-    browserHistory.push('/');
+    browserHistory.replace('/');
   }
 };
 export const routes = (
@@ -38,7 +38,3 @@ export const routes = (
     <Route path="*" component={NotFound}/>
   </Router>
 );
-
-Tracker.autorun(() => {
-  const isAuthenticated = !!Meteor.userId();
-});
