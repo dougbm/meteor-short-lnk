@@ -26,7 +26,9 @@ export default class Link extends React.Component {
   }
   onChange(e) {
     this.setState({
-      url: e.target.value
+      isOpen: false, 
+      url: '', 
+      error: ''
     });
   }
   handleModalClose() {
