@@ -1,6 +1,6 @@
 # Short Lnk
 
-This is a project built with Meteor during a Udemy course 
+This is a link shortener built with Meteor and React during a Udemy course
 
 ## Authors
 
